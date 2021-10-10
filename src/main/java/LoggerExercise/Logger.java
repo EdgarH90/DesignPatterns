@@ -1,9 +1,11 @@
 package LoggerExercise;
 
+import javax.sound.sampled.FloatControl;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,18 +15,22 @@ public class Logger {
     /**
      * @TODO Add any necessary fields and variables.
      */
-
+    private static String today = (new SimpleDateFormat("MMddyyyy")).format(new Date());
     /**
      * The constructor for SingletonLogger. Set all necessary fields.
      *
      */
-    //@TODO Add constructor here
+    private Logger(){}
+
 
     /**
      * @return A Logger instance of this class.
      */
     public static Logger getInstance() {
-        return null; //@TODO: Delete this line
+        if (instance == null){
+            instance = new Logger();
+        }
+        return instance;
     }
 
 
@@ -34,6 +40,16 @@ public class Logger {
      *            The Object that will be logged in the file.
      */
     public void logInFile(Object log) {
-        //@TODO: implement me
+
+        FileWriter logFile = null;
+        try {
+            logFile = new FileWriter("log" + today + ".log", true);
+            logFile.write(log.toString() + "\n");
+            logFile.close();
+        } catch (IOException e){
+            System.out.println("In catch block");
+            e.printStackTrace();
+        }
+
     }
 }

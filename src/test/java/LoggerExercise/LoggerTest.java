@@ -21,7 +21,7 @@ public class LoggerTest {
         assertEquals(0,constructors.length);
     }
 
-    @Test
+/*    @Test
     public void createInstanceTest() throws NoSuchFieldException,IllegalAccessException{
 
         Field field = Logger.class.getDeclaredField("instance");
@@ -31,7 +31,7 @@ public class LoggerTest {
         Logger logger = Logger.getInstance();
         assertNotNull(logger);
 
-    }
+    }*/
 
     @Test
     public void writeTest() throws IOException{
